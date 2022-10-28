@@ -63,10 +63,6 @@ public class RockPaperScissors {
         combinations.put(1, "paper");
         combinations.put(2, "scissors");
 
-        for (int i = 0; i < 10; i++) {
-            System.out.println(random.nextInt(3));
-        }
-        
         return combinations.get(random.nextInt(3));
     }
 
