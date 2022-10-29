@@ -3,7 +3,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Hangman {
-    private String[] words = {"ant", "baboon", "badger", "bat", "bear", "beaver", "camel",
+    private final String[] words = {"ant", "baboon", "badger", "bat", "bear", "beaver", "camel",
             "cat", "clam", "cobra", "cougar", "coyote", "crow", "deer",
             "dog", "donkey", "duck", "eagle", "ferret", "fox", "frog", "goat",
             "goose", "hawk", "lion", "lizard", "llama", "mole", "monkey", "moose",
@@ -14,8 +14,7 @@ public class Hangman {
             "wombat", "zebra"};
 
 
-    //if you were wondering, the only way to print '\' is with a trailing escape character, which also happens to be '\'
-    private String[] gallows = new String[]{
+    private final String[] gallows = new String[]{
             """
 +---+
 |   |
@@ -87,17 +86,16 @@ O   |
 """};
 
 
-    private String wordToGuess;
-    private char[] guessedChars;
-    private char[] missedChars;
+    private final String wordToGuess;
+    private final char[] guessedChars;
+    private final char[] missedChars;
     private int gallowsPosition;
     private char prevGuessingChar;
 
 
     public Hangman() {
         Random r = new Random();
-//        this.wordToGuess = words[r.nextInt(words.length)];
-        this.wordToGuess = "wall";
+        this.wordToGuess = words[r.nextInt(words.length)];
         this.guessedChars = new char[wordToGuess.length()];
         this.gallowsPosition = 0;
         this.missedChars = new char[6];
@@ -135,13 +133,11 @@ O   |
     }
 
 
-    private boolean isContain(char source) {
+    private boolean isContain(char c) {
         if (this.guessedChars == null) return false;
 
-        for (int i = 0; i < this.guessedChars.length; i++) {
-            if (source == this.guessedChars[i]) {
-                return true;
-            }
+        for (char guessedChar : this.guessedChars) {
+            if (guessedChar == c) return true;
         }
         return false;
     }
@@ -197,12 +193,29 @@ O   |
     }
 
 
+    private boolean charIsContainedInGuessedArr(char c) {
+        for (char guessedChar : this.guessedChars) {
+            if (guessedChar == c) return true;
+        }
+        return false;
+    }
+
+
+    private boolean guessedAllChars() {
+        for (int i = 0; i < this.wordToGuess.length(); i++) {
+            if (charIsContainedInGuessedArr(this.wordToGuess.charAt(i)));
+            else return false;
+        }
+        return true;
+    }
+
+
     private void inputGuessChar() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Guess: ");
         char tmpInput = scanner.next().charAt(0);
         if (checkCharInWord(tmpInput)) {
-            addCharToGuessedArr(tmpInput);
+            if (!charIsContainedInGuessedArr(tmpInput)) addCharToGuessedArr(tmpInput);
         } else {
             addCharToMissedArr(tmpInput);
             this.gallowsPosition++;
@@ -224,20 +237,9 @@ O   |
     }
 
 
-//    private boolean checkWordWasGuessed() {
-//        for (int i = 0; i < this.guessedChars.length; i++) {
-//            if (isContain(guessedChars[i]))
-//        }
-//    }
-
-
     public void startGame() {
-        /*
-        1) решить как ретёрнуться с цикла ака победа
-        2) решить проблему с переполнением this.guessedChars
-         */
-
-        while (this.gallowsPosition != this.gallows.length - 1 ) {
+        cleanScreen();
+        while (this.gallowsPosition != this.gallows.length - 1 && !guessedAllChars()) {
             printPrevGuessingChar();
             printGallows();
             printWord();
