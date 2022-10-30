@@ -1,4 +1,4 @@
-package booleanChallenge;
+package module1.booleanChallenge;
 
 import java.util.ArrayList;
 import java.util.Scanner;

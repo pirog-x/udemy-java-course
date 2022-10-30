@@ -1,4 +1,4 @@
-package rockPaperScissors;
+package module1.rockPaperScissors;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,11 +18,7 @@ public class RockPaperScissors {
 
         Scanner scanner = new Scanner(System.in);
         String choice = scanner.next();
-        if (choice.equals("yes")) {
-            return true;
-        } else {
-            return false;
-        }
+        return choice.equals("yes");
     }
 
     private static void gameBody() {

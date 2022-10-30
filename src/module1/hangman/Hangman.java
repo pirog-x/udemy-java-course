@@ -1,4 +1,4 @@
-package hangman;
+package module1.hangman;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -104,7 +104,7 @@ O   |
 
 
     private void printPrevGuessingChar() {
-        System.out.println("Guess: " + this.prevGuessingChar);
+        System.out.println("Previous letter: " + this.prevGuessingChar);
     }
 
 

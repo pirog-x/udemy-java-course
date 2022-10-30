@@ -1,4 +1,4 @@
-import hangman.*;
+import module1.hangman.Hangman;
 
 class Main {
     public static void main(String[] args) {
