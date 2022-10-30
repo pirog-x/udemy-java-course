@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Random;
+
 class Person {
     private String name;
     private String nationality;
@@ -6,16 +9,20 @@ class Person {
     private int seatNumber;
 
     // constructors
-    public Person(String name, String nationality, String dateOfBirth, String[] passport, int seatNumber) {
+    public Person(String name, String nationality, String dateOfBirth, int seatNumber) {
         this.name = name;
         this.nationality = nationality;
         this.dateOfBirth = dateOfBirth;
-        this.passport = passport;
         this.seatNumber = seatNumber;
+        this.passport = new String[3];
     }
 
-    public Person(Person another) {
-        this(another.getName(), another.getNationality(), another.getDateOfBirth(), another.getPassport(), another.getSeatNumber());
+    public Person(Person source) {
+        this.name = source.getName();
+        this.nationality = source.getNationality();
+        this.dateOfBirth = source.getDateOfBirth();
+        this.seatNumber = source.getSeatNumber();
+        this.passport = Arrays.copyOf(source.getPassport(), source.getPassport().length);
     }
 
 
@@ -32,12 +39,12 @@ class Person {
         return this.dateOfBirth;
     }
 
-    public String[] getPassport() {
-        return this.passport;
-    }
-
     public int getSeatNumber() {
         return this.seatNumber;
+    }
+    
+    public String[] getPassport() {
+        return Arrays.copyOf(this.passport, this.passport.length);
     }
 
 
@@ -54,17 +61,26 @@ class Person {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public void setPassport(String[] passport) {
-        this.passport = passport;
-    }
-
     public void setSeatNumber(int seatNumber) {
         this.seatNumber = seatNumber;
     }
 
+    public void setPassport(String[] passport) {
+        this.passport = Arrays.copyOf(passport, passport.length);
+    }
+
 
     // methods
-    public void applyPassport(){}
+    public boolean applyPassport(){
+        return new Random().nextBoolean();
+    }
 
-    public void chooseSeat(){}
+    public void chooseSeat() {
+        this.seatNumber = new Random().nextInt(11) + 1;
+    }
+
+    public String toString() {
+        return "Name: " + this.name + ", Nationality: " + this.nationality +
+                " Date of birthd: " + this.dateOfBirth + ", Seat number: " + this.seatNumber;
+    }
 }
