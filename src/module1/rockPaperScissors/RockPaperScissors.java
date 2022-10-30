@@ -1,5 +1,3 @@
-package module1.rockPaperScissors;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;

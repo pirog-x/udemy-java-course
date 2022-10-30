@@ -1,17 +1,15 @@
-package module1.booleanChallenge;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
 
 
 public class TriviaQuiz {
-    public static void solution() {
+    public void solution() {
         List<String> userAnswers = triviaQuiz();
         getResult(userAnswers);
     }
 
-    private static List<String> triviaQuiz() {
+    private List<String> triviaQuiz() {
         Scanner scanner = new Scanner(System.in);
         List<String> userAnswers = new ArrayList<>(4);
 
@@ -49,7 +47,7 @@ public class TriviaQuiz {
         return userAnswers;
     }
 
-    private static int checkAnswers(List<String> userAnswers) {
+    private int checkAnswers(List<String> userAnswers) {
         List<String> correctAnswers = new ArrayList<>(4);
         correctAnswers.add("c");
         correctAnswers.add("a");
@@ -72,7 +70,7 @@ public class TriviaQuiz {
         return userMark;
     }
 
-    private static void getResult(List<String> userAnswer) {
+    private void getResult(List<String> userAnswer) {
         int userMark = checkAnswers(userAnswer);
         System.out.println("Your final score is: " + userMark + "/20");
 
