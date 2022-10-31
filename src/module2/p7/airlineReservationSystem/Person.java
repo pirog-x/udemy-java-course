@@ -14,7 +14,7 @@ class Person {
         this.nationality = nationality;
         this.dateOfBirth = dateOfBirth;
         this.seatNumber = seatNumber;
-        this.passport = new String[3];
+        this.passport = new String[]{name, nationality, dateOfBirth};
     }
 
     public Person(Person source) {
@@ -80,7 +80,10 @@ class Person {
     }
 
     public String toString() {
-        return "Name: " + this.name + ", Nationality: " + this.nationality +
-                " Date of birthd: " + this.dateOfBirth + ", Seat number: " + this.seatNumber;
+        return "Name: " + this.name + "\n" + "Nationality: " +
+                this.nationality + "\n" + "Date of Birth: " +
+                this.dateOfBirth + "\n" + "Seat Number: " +
+                this.seatNumber + "\n" + "Passport: " +
+                Arrays.toString(this.passport) + "\n";
     }
 }
