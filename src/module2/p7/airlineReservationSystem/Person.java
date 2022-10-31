@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.Random;
 
+
 class Person {
     private String name;
     private String nationality;
