@@ -15,7 +15,6 @@ class Person {
         this.nationality = nationality;
         this.dateOfBirth = dateOfBirth;
         this.seatNumber = seatNumber;
-        this.passport = new String[]{name, nationality, dateOfBirth};
     }
 
     public Person(Person source) {
@@ -23,7 +22,7 @@ class Person {
         this.nationality = source.getNationality();
         this.dateOfBirth = source.getDateOfBirth();
         this.seatNumber = source.getSeatNumber();
-        this.passport = Arrays.copyOf(source.getPassport(), source.getPassport().length);
+        this.passport = (source.getPassport() != null ? Arrays.copyOf(source.getPassport(), source.getPassport().length) : null);
     }
 
 
@@ -45,7 +44,7 @@ class Person {
     }
     
     public String[] getPassport() {
-        return Arrays.copyOf(this.passport, this.passport.length);
+        return (this.passport != null ? Arrays.copyOf(this.passport, this.passport.length) : null);
     }
 
 
