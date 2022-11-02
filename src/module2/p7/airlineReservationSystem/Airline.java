@@ -4,6 +4,14 @@ public class Airline {
     public Airline() {
         this.seats = new Person[11];
     }
+
+    public Airline(Person[] seats) {
+        this.seats = new Person[seats.length];
+
+        for (int i = 0; i < seats.length; i++) {
+            this.seats[i] = new Person(seats[i]);
+        }   
+    }
     
     public Person getPerson(int index) {
         if (index < 0 || index >= this.seats.length) return null;
