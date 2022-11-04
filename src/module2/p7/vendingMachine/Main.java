@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -18,28 +19,52 @@ public class Main {
         while (true) {
             System.out.println("\n" + machine);
 
-            System.out.print("Enter row: ");
-            int choiceRow = scan.nextInt();
-            System.out.print("Enter column: ");
-            int choiceColumn = scan.nextInt();
+            int choiceRow = 0, choiceColumn = 0;
+            try {
+                System.out.print("Enter row: ");
+                choiceRow = scan.nextInt();
+
+                System.out.print("Enter column: ");
+                choiceColumn = scan.nextInt();
+
+                if (choiceRow >= items.length || choiceRow < 0)
+                    throw new ArrayIndexOutOfBoundsException();
+                if (choiceColumn >= items[choiceRow].length || choiceColumn < 0)
+                    throw  new ArrayIndexOutOfBoundsException();
+            } catch (InputMismatchException e) {
+                System.err.println("\nWrong input\n");
+                scan.nextLine();
+                continue;
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.err.println("\nWrong index\n");
+                scan.nextLine();
+                continue;
+            }
 
             if (machine.dispense(choiceRow, choiceColumn)) {
                 scan.nextLine();
                 System.out.print("\nEnjoy your drink! Press 1 to purchase another: ");
 
-                boolean choice = scan.nextInt() == 1 ? true : false;
-
-                if (choice) continue;
-                else break;
-
+                try {
+                    boolean choice = scan.nextInt() == 1;
+                    if (choice) continue;
+                    else break;
+                } catch (InputMismatchException e) {
+                    System.err.println("\nWrong input\n");
+                    scan.nextLine();
+                }
             } else {
                 scan.nextLine();
                 System.out.print("\nSorry, we're out of this item. Press 1 to purchase another: ");
 
-                boolean choice = scan.nextInt() == 1 ? true : false;
-
-                if (choice) continue;
-                else break;
+                try {
+                    boolean choice = scan.nextInt() == 1;
+                    if (choice) continue;
+                    else break;
+                } catch (InputMismatchException e) {
+                    System.err.println("\nWrong input\n");
+                    scan.nextLine();
+                }
             }
        }
        scan.close();
