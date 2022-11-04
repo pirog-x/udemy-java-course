@@ -49,6 +49,6 @@ class Item {
     
     // methods
     public String toString() {
-        return "name: " + this.name + ", price: " + this.price + ", quantity: " + this.quantity;
+        return this.name + ": " + this.price + " (" + this.quantity + ")";
     }
 };

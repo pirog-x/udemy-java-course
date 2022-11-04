@@ -72,4 +72,19 @@ class Machine {
         items[row][column].setQuantity(items[row][column].getQuantity() - 1);
         return true;
     }
+
+
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < items.length; i++) {
+            result.append("\t");
+            for (int j = 0; j < items[i].length; j++) {
+                result.append(items[i][j] + " \t");
+            }
+            result.append("\n\n");
+        }
+        result.append("\t***************************************************************");
+
+        return result.toString();
+    }
 };

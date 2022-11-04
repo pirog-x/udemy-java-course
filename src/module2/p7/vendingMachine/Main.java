@@ -1,8 +1,8 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("\t*****************************************************************");
+        System.out.println("\t***************************************************************");
         System.out.println("\t                    WELCOME TO JAVA DRINKS!                      ");
-        System.out.println("\t*****************************************************************");
+        System.out.println("\t***************************************************************");
 
         Item[][] items = new Item[][] {
             { new Item("Pepsi", 1.99, 3) , new Item("Fresca", 1.49, 3), new Item("Brisk", 2.49, 2) },
@@ -11,6 +11,7 @@ public class Main {
         };
 
         Machine machine = new Machine(items);
+        System.out.println(machine);
 
     }
 };
