@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("\t***************************************************************");
@@ -11,7 +13,35 @@ public class Main {
         };
 
         Machine machine = new Machine(items);
-        System.out.println(machine);
+        Scanner scan = new Scanner(System.in);
 
+        while (true) {
+            System.out.println("\n" + machine);
+
+            System.out.print("Enter row: ");
+            int choiceRow = scan.nextInt();
+            System.out.print("Enter column: ");
+            int choiceColumn = scan.nextInt();
+
+            if (machine.dispense(choiceRow, choiceColumn)) {
+                scan.nextLine();
+                System.out.print("\nEnjoy your drink! Press 1 to purchase another: ");
+
+                boolean choice = scan.nextInt() == 1 ? true : false;
+
+                if (choice) continue;
+                else break;
+
+            } else {
+                scan.nextLine();
+                System.out.print("\nSorry, we're out of this item. Press 1 to purchase another: ");
+
+                boolean choice = scan.nextInt() == 1 ? true : false;
+
+                if (choice) continue;
+                else break;
+            }
+       }
+       scan.close();
     }
 };
