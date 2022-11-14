@@ -3,21 +3,23 @@ import models.*;
 
 public class Main {
     public static void main(String[] args) {
-        try {
-            Contact contact1 = new Contact("John", "123", "09/15/2002");
-            Contact contact2 = new Contact("Sam", "456", "09/06/2005");
-            Contact contact3 = new Contact(contact1);
+        ContactManager manager = new ContactManager();
 
-            contact1.setName("null");
-            System.out.println(contact1);
-            System.out.println(contact2);
-            System.out.println(contact3);
+        try {
+            manager.addContact(new Contact("Ryan", "6135012424", "11/11/1992"));
+            manager.addContact(new Contact("Gio", "6477092344", "11/11/1993"));
+            manager.addContact(new Contact("Thomas", "8192256979", "11/11/1994"));
 
         } catch (ParseException e) {
             System.out.println(e.getMessage());
         } finally {
             System.out.println("Process complete.");
         }
+
+        System.out.println(manager);
+        System.out.println("--------------------------\n");
+        manager.remove("Gio");
+        System.out.println(manager);
         
     }
 
