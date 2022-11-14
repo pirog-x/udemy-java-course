@@ -1,12 +1,18 @@
 import java.text.ParseException;
-
 import models.*;
 
 public class Main {
     public static void main(String[] args) {
         try {
-            Contact contact = new Contact("John", "123", "07/23/1912");
-            System.out.println(contact);
+            Contact contact1 = new Contact("John", "123", "09/15/2002");
+            Contact contact2 = new Contact("Sam", "456", "09/06/2005");
+            Contact contact3 = new Contact(contact1);
+
+            contact1.setName("null");
+            System.out.println(contact1);
+            System.out.println(contact2);
+            System.out.println(contact3);
+
         } catch (ParseException e) {
             System.out.println(e.getMessage());
         } finally {
