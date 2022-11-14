@@ -8,7 +8,7 @@ public class ContactManager {
 
     // constructors
     public ContactManager() {
-        this.contacts = new ArrayList<>(10);
+        this.contacts = new ArrayList<Contact>();
     }
 
 
@@ -27,7 +27,8 @@ public class ContactManager {
         contacts.add(new Contact(c));
     }
 
-    public void remove(String name) {
+    public void remove(String name) throws IllegalStateException {
+        if (contacts.isEmpty()) throw new IllegalStateException("cannot remove from empty list");
         for (Contact c : contacts) {
             if (c.getName().equals(name)) {
                 contacts.remove(c);
