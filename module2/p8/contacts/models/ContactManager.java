@@ -2,6 +2,7 @@ package models;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.List;;
 
 public class ContactManager {
     private ArrayList<Contact> contacts;
