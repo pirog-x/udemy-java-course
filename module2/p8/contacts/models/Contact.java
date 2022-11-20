@@ -14,7 +14,7 @@ public class Contact {
 
     // constructors
     public Contact(String name, String number, String birthday) throws ParseException, IllegalArgumentException {
-        if (name.isBlank() || name == null) throw new IllegalArgumentException("name cannot be blank/null");
+        if (name.isBlank()) throw new IllegalArgumentException("name cannot be blank/null");
         else if (number.isBlank()) throw new IllegalArgumentException("number cannot be blank");
         else if (number.length() < 5) throw new IllegalArgumentException("number length cannot be lesser than 5");
         
@@ -49,17 +49,17 @@ public class Contact {
         this.age = age;
     }
     public void setName(String name) {
-        if (name.isBlank() || name == null) throw new IllegalArgumentException("name cannot be blanck/null");
+        if (name.isBlank()) throw new IllegalArgumentException("name cannot be blanck/null");
         this.name = name;
     }
     public void setBirthday(String birthday) throws ParseException {
-        if (birthday.isBlank() || birthday == null) throw new IllegalArgumentException("birthday cannot be blanck/null");
+        if (birthday.isBlank()) throw new IllegalArgumentException("birthday cannot be blanck/null");
         this.birthday = birthday;
 
         setAge(toAge(birthday));
     }
     public void setNumber(String number) throws IllegalArgumentException {
-        if (number.isBlank() || number == null) throw new IllegalArgumentException("number cannot be blank/null");
+        if (number.isBlank()) throw new IllegalArgumentException("number cannot be blank/null");
         this.number = number;
     }
 
