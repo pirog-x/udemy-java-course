@@ -9,8 +9,15 @@ public class Movie {
     private boolean isAvailable;
 
     public Movie(String name, String format, double rating) {
+        if (name.isBlank())
+            throw new IllegalArgumentException("name cannot be blank/null");
         this.name = name;
+
+        if (!(format.equalsIgnoreCase("blue-ray") || format.equalsIgnoreCase("dvd")))
+            throw new IllegalArgumentException("wrong format");
         this.format = format;
+        if (rating < 0 || rating > 10)
+            throw new IllegalArgumentException("rating cannot be less than zero or high than ten");
         this.rating = rating;
         this.isAvailable = true;
         this.sellingPrice = format.equals("Blue-Ray") ? 4.25 : 2.25;
@@ -55,6 +62,8 @@ public class Movie {
 
     // setters
     public void setName(String name) {
+        if (name.isBlank())
+            throw new IllegalArgumentException("name cannot be blank/null");
         this.name = name;
     }
 
@@ -63,12 +72,18 @@ public class Movie {
     }
 
     public void setFormat(String format) {
+        if (format.isBlank())
+            throw new IllegalArgumentException("format cannot be blank/null");
+        if (!(format.equalsIgnoreCase("blue-ray") || format.equalsIgnoreCase("dvd")))
+            throw new IllegalArgumentException("wrong format");
         this.format = format;
         setSellingPrice(format.equals("Blue-Ray") ? 4.25 : 2.25);
         setRentalPrice(format.equals("Blue-Ray") ? 1.99 : 0.99);
     }
 
     public void setRating(double rating) {
+        if (rating < 0 || rating > 10)
+            throw new IllegalArgumentException("rating cannot be less than zero or high than ten");
         this.rating = rating;
     }
 
