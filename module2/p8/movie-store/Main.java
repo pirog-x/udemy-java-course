@@ -3,15 +3,15 @@ import models.*;
 public class Main {
     public static void main(String[] args) {
         System.out.println("\n********************JAVA VIDEO STORE********************\n");
-        Movie m1 = new Movie("Top gun", "DVD", 5);
-        Movie m2 = new Movie(m1);
-        System.out.println("m1.getRentalPrice() = " + m1.getRentalPrice());
-        System.out.println("m2.getRentalPrice() = " + m2.getRentalPrice());
-        m1.setFormat("Blue-Ray");
-        m1.setAvailable(false);
-        System.out.println("m1.getRentalPrice() = " + m1.getRentalPrice());
-        System.out.println("m2.getRentalPrice() = " + m2.getRentalPrice());
-        System.out.println("\n\n" + m1 + "\n\n" + m2);
+        Store store = new Store();
+        store.addMovie(new Movie("The Shawshank Redemption", "blue-ray", 9.2));
+        store.addMovie(new Movie("The Godfather", "blue-ray", 9.1));
+        store.addMovie(new Movie("The Godfather: Part II", "dvd", 9.0));
+
+        store.action("The Godfather", "sell");
+        store.action("The Godfather: Part II", "rent");
+        store.action("The Godfather: Part II", "return");
+        System.out.println(store);
     }
 
     /**
