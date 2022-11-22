@@ -26,11 +26,14 @@ public class Store {
     }
 
     public void action(String name, String action) {
+        if (movies.isEmpty()) {
+            throw new IllegalStateException("store is empty");
+        }
         if (name.isBlank() || action.isBlank()) {
             throw new IllegalArgumentException("name/action cannot be blank/null");
         }
-        if (movies.isEmpty()) {
-            throw new IllegalStateException("store is empty");
+        if (!action.equalsIgnoreCase("rent") && !action.equalsIgnoreCase("sell") && !action.equalsIgnoreCase("return")) {
+            throw new IllegalArgumentException("wrong action");
         }
 
         for (Movie m : movies) {
@@ -44,8 +47,6 @@ public class Store {
                     m.setAvailable(false);
                 } else if (action.equalsIgnoreCase("return")) {
                     m.setAvailable(true);
-                } else {
-                    throw new IllegalArgumentException("wrong action");
                 }
                 break;
             }
