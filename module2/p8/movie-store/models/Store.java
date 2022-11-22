@@ -17,6 +17,15 @@ public class Store {
         return new Movie(movies.get(index));
     }
 
+    public Movie getMovie(String name) {
+        for (Movie m : movies) {
+            if (m.getName().equals(name)) {
+                return new Movie(m);
+            }
+        }
+        return null;
+    }
+
     public void setMovie(int index, Movie movie) {
         this.movies.set(index, new Movie(movie));
     }
@@ -39,6 +48,9 @@ public class Store {
         for (Movie m : movies) {
             if (m.getName().equals(name)) {
                 if (action.equalsIgnoreCase("sell")) {
+                    if (!m.isAvailable()) {
+                        throw new IllegalStateException("Cannot sell movie that was rented");
+                    }
                     movies.remove(m);
                 } else if (action.equalsIgnoreCase("rent")) {
                     if (!m.isAvailable()) {
@@ -60,5 +72,9 @@ public class Store {
             result.append(m.toString()).append("\n\n");
         }
         return result.toString();
+    }
+
+    public boolean isEmpty() {
+        return movies.size() == 0;
     }
 }
