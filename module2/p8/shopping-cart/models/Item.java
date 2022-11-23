@@ -45,4 +45,14 @@ public class Item {
     public String toString() {
         return name + ": $" + price + " ";
     }
+
+    public boolean equals(Object another) {
+        if (another == null) {
+            return false;
+        }
+        if (!(another instanceof Item i)) {
+            return false;
+        }
+        return name.equals(i.name) && price == i.price;
+    }
 }
