@@ -31,6 +31,9 @@ public class Cart {
     }
 
     public void remove(String name) {
+        if (items.isEmpty()) {
+            throw new IllegalStateException("cannot remove elements from empty list");
+        }
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("name cannot be null/blank");
         }
@@ -44,6 +47,9 @@ public class Cart {
     }
 
     public String checkout() {
+        if (items.isEmpty()) {
+            throw new IllegalStateException("list is empty");
+        }
         double tax = 13;
         double priceWithoutTax = 0;
 
