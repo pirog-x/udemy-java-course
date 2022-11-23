@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
-
     private final List<Item> items;
 
     public Cart() {
-        items = new ArrayList<>();
+        this.items = new ArrayList<>();
     }
 
     public Item getItem(int index) {
