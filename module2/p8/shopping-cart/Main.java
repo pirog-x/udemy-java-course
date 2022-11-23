@@ -1,9 +1,14 @@
 import models.*;
 
 public class Main {
+    private static final Cart cart = new Cart();
     public static void main(String[] args) {
-        Item i = new Item("Celery", 0.99);
-        System.out.println(i);
+        cart.add(new Item("Celery", 0.99));
+        cart.add(new Item("Celery", 0.99));
+        cart.add(new Item("Spinach", 0.99));
+        cart.add(new Item("Coriander", 1.29));
+
+        System.out.println(cart);
     }
 
     /**
