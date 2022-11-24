@@ -10,14 +10,6 @@ public class Cart {
         this.items = new ArrayList<>();
     }
 
-    public Item getItem(int index) {
-        return new Item(items.get(index));
-    }
-
-    public void setItems(int index, Item item) {
-        items.set(index, new Item(item));
-    }
-
     public boolean add(Item item) {
         if (item == null) {
             throw new IllegalArgumentException("item cannot be null");
@@ -49,18 +41,17 @@ public class Cart {
         if (items.isEmpty()) {
             throw new IllegalStateException("list is empty");
         }
-        double tax = 13;
         double priceWithoutTax = 0;
 
         for (Item i : items) {
             priceWithoutTax += i.getPrice();
         }
-        double taxPrice = (tax / priceWithoutTax) * 100;
+        double taxPrice = 0.13 * priceWithoutTax;
         double totalPrice = priceWithoutTax + taxPrice;
 
         return "\tRECEIPT\n\n" +
                 "\tSubtotal: $" + priceWithoutTax + "\n" +
-                "\tTax: $" + tax + "\n" +
+                "\tTax: $" + taxPrice + "\n" +
                 "\tTotal: $" + totalPrice + "\n";
     }
 
@@ -71,5 +62,9 @@ public class Cart {
             result.append(i).append("\n");
         }
         return result.toString();
+    }
+
+    public int size() {
+        return this.items.size();
     }
 }

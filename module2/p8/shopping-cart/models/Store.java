@@ -37,4 +37,13 @@ public class Store {
 
         return result.toString();
     }
+
+    public int getRowSize() {
+        return this.items.length;
+    }
+
+
+    public int getColumnSize() {
+        return this.items[0].length;
+    }
 }
