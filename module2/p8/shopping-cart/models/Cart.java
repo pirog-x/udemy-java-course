@@ -64,7 +64,7 @@ public class Cart {
         return result.toString();
     }
 
-    public int size() {
-        return this.items.size();
+    public boolean isEmpty() {
+        return this.items.isEmpty();
     }
 }

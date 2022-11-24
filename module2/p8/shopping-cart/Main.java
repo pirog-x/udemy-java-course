@@ -54,29 +54,28 @@ public class Main {
                     System.out.print("Enter the aisle 1 - 7: ");
                     if (!scan.hasNextInt()) {
                         System.out.println("Wrong input");
+                        scan.nextLine();
                         continue;
                     }
-                    int row = scan.nextInt();
+                    int row = scan.nextInt() - 1;
                     scan.nextLine();
-                    row--;
                     if (row < 0 || row >= store.getRowSize()) {
                         System.out.println("Wrong aisle bound");
-                        pressAnyKeyToContinue();
                         continue;
                     }
+
 
                     System.out.print("Enter item number 1 - 3: ");
                     if (!scan.hasNextInt()) {
                         System.out.println("Wrong input");
-                        pressAnyKeyToContinue();
+                        scan.nextLine();
                         continue;
                     }
-                    int column = scan.nextInt();
+                    int column = scan.nextInt() - 1;
                     scan.nextLine();
-                    column--;
+
                     if (column < 0 || column >= store.getColumnSize()) {
                         System.out.println("Wrong items bound");
-                        pressAnyKeyToContinue();
                         continue;
                     }
 
@@ -87,7 +86,7 @@ public class Main {
 
                 case 'b' -> {
                     cleanScreen();
-                    if (cart.size() == 0) {
+                    if (cart.isEmpty()) {
                         System.out.println("Cart is empty\n");
                         pressAnyKeyToContinue();
                         continue;
@@ -103,8 +102,9 @@ public class Main {
 
                 case 'c' -> {
                     cleanScreen();
-                    if (cart.size() == 0) {
+                    if (cart.isEmpty()) {
                         System.out.println("Cart is empty\n");
+                        pressAnyKeyToContinue();
                         continue;
                     }
 
