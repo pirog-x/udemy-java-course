@@ -10,8 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class StoreTest {
-
-    Store store;
+    private Store store;
 
     @BeforeEach
     public void setup() {
@@ -29,5 +28,12 @@ public class StoreTest {
     public void sellMovieTest() {
         store.sellMovie("The Godfather");
         assertFalse(store.contains(new Movie("The Godfather", "Blue-Ray", 9.1)));
+    }
+
+    @Test
+    public void rentMovieTest() {
+        String name = "The Godfather";
+        store.rentMovie(name);
+        assertFalse(store.getMovie(1).isAvailable());
     }
 }
