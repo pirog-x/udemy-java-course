@@ -33,4 +33,8 @@ public class Store {
     public boolean contains(Movie movie) {
         return movies.contains(movie);
     }
+
+    public void sellMovie(String name) {
+        movies.removeIf(m -> m.getName().equals(name));
+    }
 }

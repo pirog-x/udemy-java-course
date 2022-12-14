@@ -108,6 +108,11 @@ public class Movie {
         if (o == null) return false;
         if (!(o instanceof Movie)) return false;
         Movie movie = (Movie) o;
-        return movie.name.equals(this.name);
+        return movie.name.equals(this.name) &&
+                movie.format.equals(this.format) &&
+                movie.rating == this.rating &&
+                movie.sellingPrice == this.sellingPrice &&
+                movie.rentalPrice == this.rentalPrice &&
+                movie.isAvailable == this.isAvailable;
     }
 }
