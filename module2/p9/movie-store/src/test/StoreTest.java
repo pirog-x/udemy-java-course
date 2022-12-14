@@ -1,12 +1,12 @@
 package src.test;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import src.main.models.Movie;
 import src.main.models.Store;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class StoreTest {
@@ -43,5 +43,12 @@ public class StoreTest {
         store.rentMovie(name);
         store.returnMovie(name);
         assertTrue(store.getMovie(1).isAvailable());
+    }
+
+    @Test
+    public void movieNotInStock() {
+        String name = "The Godfather";
+        store.rentMovie(name);
+        Assertions.assertThrows(IllegalStateException.class, () -> store.sellMovie(name));
     }
 }

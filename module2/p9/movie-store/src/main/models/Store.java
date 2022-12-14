@@ -36,6 +36,7 @@ public class Store {
     }
 
     public void sellMovie(String name) {
+        if (!movies.get(getMovieIndex(name)).isAvailable()) throw new IllegalStateException("you cannot sell the rented movie");
         movies.removeIf(m -> m.getName().equals(name));
     }
 
