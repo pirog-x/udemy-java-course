@@ -36,4 +36,12 @@ public class StoreTest {
         store.rentMovie(name);
         assertFalse(store.getMovie(1).isAvailable());
     }
+
+    @Test
+    public void returnMovieTest() {
+        String name = "The Godfather";
+        store.rentMovie(name);
+        store.returnMovie(name);
+        assertTrue(store.getMovie(1).isAvailable());
+    }
 }

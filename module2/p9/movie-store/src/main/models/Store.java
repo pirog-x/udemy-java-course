@@ -49,4 +49,8 @@ public class Store {
                 .findFirst()
                 .orElse(-1000);
     }
+
+    public void returnMovie(String name) {
+        movies.get(getMovieIndex(name)).setAvailable(true);
+    }
 }
