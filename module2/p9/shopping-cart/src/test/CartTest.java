@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import src.main.models.Cart;
 import src.main.models.Item;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CartTest {
     Cart cart;
@@ -34,5 +33,11 @@ public class CartTest {
     public void removedItemTest() {
         cart.remove("Crush");
         assertFalse(cart.contains(new Item("Crush", 1.99)));
+    }
+
+    @Test
+    public void subtotalIsValid() {
+        double subtotal = 1.99 * 2;
+        assertEquals(subtotal, cart.getSubtotal());
     }
 }

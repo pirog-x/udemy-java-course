@@ -17,10 +17,6 @@ public class Cart {
         this.items.set(index, new Item(item));
     }
 
-
-
-
-    
     public String toString() {
         StringBuilder temp = new StringBuilder();
         for (Item item : this.items) {
@@ -43,5 +39,9 @@ public class Cart {
     public void remove(String name) {
         if (items.isEmpty()) throw new IllegalStateException("Cannot remove from empty Cart");
         items.removeIf((e) -> e.getName().equals(name));
+    }
+
+    public double getSubtotal() {
+        return items.stream().mapToDouble(Item::getPrice).sum();
     }
 }

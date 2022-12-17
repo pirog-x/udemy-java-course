@@ -15,3 +15,4 @@ The checkout process returns a receipt that holds the subtotal, tax, and total.
     - `[identify test case 6]`
     - `[identify test case 7]`
     - `[identify state exception test case]`
+
