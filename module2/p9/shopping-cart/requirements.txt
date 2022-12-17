@@ -7,11 +7,9 @@ The checkout process returns a receipt that holds the subtotal, tax, and total.
 - adding an item if not already added
     - if item is existed
     - if item isn't existed
-    - `[identify test case 1]`
-    - `[identify test case 2]`
 - removing an item
-    - `[identify test case 3]`
-    - `[identify state exception test case]`
+    - if item is existed
+    - if item isn't existed
 - checkout
     - `[identify test case 5]`
     - `[identify test case 6]`

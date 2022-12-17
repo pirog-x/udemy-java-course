@@ -6,7 +6,7 @@ public class Cart {
     ArrayList<Item> items;
 
     public Cart() {
-        this.items = new ArrayList<Item>();
+        this.items = new ArrayList<>();
     }
 
     public Item getItem(int index) {
@@ -22,12 +22,12 @@ public class Cart {
 
     
     public String toString() {
-        String temp = "";
-        for (int i = 0; i < this.items.size(); i++) {
-            temp += this.items.get(i).toString();
-            temp += "\n";
+        StringBuilder temp = new StringBuilder();
+        for (Item item : this.items) {
+            temp.append(item.toString());
+            temp.append("\n");
         }
-        return temp;
+        return temp.toString();
     }
 
     public boolean add(Item item) {
@@ -38,5 +38,10 @@ public class Cart {
 
     public boolean contains(Item item) {
         return items.contains(item);
+    }
+
+    public void remove(String name) {
+        if (items.isEmpty()) throw new IllegalStateException("Cannot remove from empty Cart");
+        items.removeIf((e) -> e.getName().equals(name));
     }
 }

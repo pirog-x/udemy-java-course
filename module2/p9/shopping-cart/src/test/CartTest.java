@@ -29,4 +29,10 @@ public class CartTest {
         assertFalse(cart.add(new Item("Pepsi", 1.99)));
         assertTrue(cart.add(new Item("Karakum", 1.89)));
     }
+
+    @Test
+    public void removedItemTest() {
+        cart.remove("Crush");
+        assertFalse(cart.contains(new Item("Crush", 1.99)));
+    }
 }
