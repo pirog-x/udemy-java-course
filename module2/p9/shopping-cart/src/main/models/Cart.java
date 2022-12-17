@@ -57,6 +57,7 @@ public class Cart {
     }
 
     public String checkout() {
+        if (items.isEmpty()) throw new IllegalStateException("Cart is empty");
         return "\tRECEIPT\n\n" +
                 "\tSubtotal: $" + getSubtotal() + "\n" +
                 "\tTax: $" + getTax(getSubtotal()) + "\n" +

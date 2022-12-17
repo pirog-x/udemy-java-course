@@ -57,4 +57,10 @@ public class CartTest {
         cart.clear();
         Assertions.assertThrows(IllegalStateException.class, () -> cart.remove("This should crash the app"));
     }
+
+    @Test
+    public void invalidCheckoutState() {
+        cart.clear();
+        Assertions.assertThrows(IllegalStateException.class, () -> cart.checkout());
+    }
 }
