@@ -62,4 +62,9 @@ public class Cart {
                 "\tTax: $" + getTax(getSubtotal()) + "\n" +
                 "\tTotal: $" + getTotal(getSubtotal(), getTax(getSubtotal())) + "\n";
     }
+
+    public void clear() {
+        if (items.isEmpty()) return;
+        items.clear();
+    }
 }

@@ -1,5 +1,6 @@
 package src.test;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import src.main.models.Cart;
@@ -49,5 +50,11 @@ public class CartTest {
     @Test
     public void totalIsValid() {
         assertEquals(96.67, cart.getTotal(85.55, 11.12));
+    }
+
+    @Test
+    public void invalidRemoveState() {
+        cart.clear();
+        Assertions.assertThrows(IllegalStateException.class, () -> cart.remove("This should crash the app"));
     }
 }
