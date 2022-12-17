@@ -12,7 +12,7 @@ public class Movie {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("name must contain a value");
         }
-        if (!(format.equals("DVD") || format.equals("Blue-Ray"))) {
+        if (!(format.equalsIgnoreCase("DVD") || format.equalsIgnoreCase("Blue-Ray"))) {
             throw new IllegalArgumentException("format must be DVD or Blue-Ray");
         }
         if (rating < 0 || rating > 10) {
@@ -60,9 +60,7 @@ public class Movie {
     }
 
     public void setName(String name) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("name cannot be null/blank");
-        }
+        if (name == null || name.isBlank()) throw new IllegalArgumentException("name cannot be null/blank");
         this.name = name;
     }
 
@@ -76,11 +74,9 @@ public class Movie {
     }
 
     public void setRating(double rating) {
-        if (rating < 0 || rating > 10) {
-            throw new IllegalArgumentException("invalid rating");
-        }
+        if (rating < 0 || rating > 10) throw new IllegalArgumentException("invalid rating");
         this.rating = rating;
-    }
+}
 
     private void setSellingPrice(double sellingPrice) {
         this.sellingPrice = sellingPrice;
@@ -94,6 +90,7 @@ public class Movie {
         this.isAvailable = isAvailable;
     }
 
+    @Override
     public String toString() {
         return "\t Name: " + this.name + "\n" +
                "\t Format: " + this.format + "\n" +

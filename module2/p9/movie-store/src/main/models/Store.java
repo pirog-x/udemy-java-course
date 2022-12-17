@@ -18,13 +18,13 @@ public class Store {
         this.movies.set(index, new Movie(movie));
     }
 
+    @Override
     public String toString() {
-        String temp = "";
+        StringBuilder tmp = new StringBuilder();
         for (Movie movie : this.movies) {
-            temp += movie.toString();
-            temp += "\n\n";
+            tmp.append(movie.toString()).append("\n\n");
         }
-        return temp;
+        return tmp.toString();
     }
 
     public void addMovie(Movie movie) {
