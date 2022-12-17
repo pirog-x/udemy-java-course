@@ -1,5 +1,6 @@
 package src.main.models;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Cart {
@@ -43,5 +44,22 @@ public class Cart {
 
     public double getSubtotal() {
         return items.stream().mapToDouble(Item::getPrice).sum();
+    }
+
+    public double getTax(double subtotal) {
+        final double tax = 0.13;
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        return Double.parseDouble(decimalFormat.format(subtotal * tax));
+    }
+
+    public double getTotal(double subtotal, double tax) {
+        return subtotal + tax;
+    }
+
+    public String checkout() {
+        return "\tRECEIPT\n\n" +
+                "\tSubtotal: $" + getSubtotal() + "\n" +
+                "\tTax: $" + getTax(getSubtotal()) + "\n" +
+                "\tTotal: $" + getTotal(getSubtotal(), getTax(getSubtotal())) + "\n";
     }
 }

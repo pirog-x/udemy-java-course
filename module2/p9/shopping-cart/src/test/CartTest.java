@@ -40,4 +40,14 @@ public class CartTest {
         double subtotal = 1.99 * 2;
         assertEquals(subtotal, cart.getSubtotal());
     }
+
+    @Test
+    public void taxIsValid() {
+        assertEquals(3.9, cart.getTax(30));
+    }
+
+    @Test
+    public void totalIsValid() {
+        assertEquals(96.67, cart.getTotal(85.55, 11.12));
+    }
 }
