@@ -1,6 +1,7 @@
 package src.main.models;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Team {
     private String house;
@@ -12,16 +13,24 @@ public class Team {
     private static final String POSITION_SEEKER = "seeker";
     private static final String POSITION_KEEPER = "keeper";
 
-/* FREQUENTLY ASKED QUESTIONS:
 
-Question: the constants are final, so why can't we make them public?
-It's not possible for the caller to update them.
-
-  Answer: Even if the constant is final, I prefer to expose a method instead of
-  the variable. But if you want to expose the variable, that's also correct.
-
-*/
     public Team(String house, String keeper, String seeker, String[] chasers) {
+        if (house == null || keeper == null || seeker == null || chasers == null) {
+            throw new IllegalArgumentException("field cannot be null");
+        }
+        if (house.isBlank() || keeper.isBlank() || seeker.isBlank()) {
+            throw new IllegalArgumentException("field cannot be blank");
+        }
+        if (chasers.length != 3) {
+            throw new IllegalArgumentException("chasers length must equal to 3");
+        }
+        if (Arrays.stream(chasers).anyMatch(Objects::isNull)) {
+            throw new IllegalArgumentException("Any field of chasers cannot be null");
+        }
+        if (Arrays.stream(chasers).anyMatch(String::isBlank)) {
+            throw new IllegalArgumentException("Any of the chasers elements cannot be blanked");
+        }
+
         this.house = house;
         this.keeper = keeper;
         this.seeker = seeker;
